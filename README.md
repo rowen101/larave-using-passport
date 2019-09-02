@@ -1,27 +1,47 @@
-Laravel passport
+# Laravel passport 
+What is Passport?
+APIs typically use tokens to authenticate users and do not maintain session state between requests. 
+Laravel makes API authentication a breeze using Laravel Passport, which provides a full OAuth2 server implementation 
+for your Laravel application development in a matter of minutes.
 
-What is Passport? APIs typically use tokens to authenticate users and do not maintain session state between requests. Laravel makes API authentication a breeze using Laravel Passport, which provides a full OAuth2 server implementation for your Laravel application development in a matter of minutes.
-You have to just follow a few steps to get following web services
-Login API
-Register API
-Details API
-Getting Started
-Step 1: Install Package
+### You have to just follow a few steps to get following web services
+##### Login API
+##### Register API
+##### Details API
 
-composer require laravel/passport
-open config/app.php file and add service provider.
+
+
+
+## Getting Started
+### Step 1: Install Package
+
+```` composer require laravel/passport ````
+
+## open config/app.php file and add service provider.
+
+```javascript 
 
 config/app.php
 'providers' =>[
 Laravel\Passport\PassportServiceProvider::class,
 ],
 
-Step 2: Run Migration and Install
+````
+
+## Step 2: Run Migration and Install
+
+```javascript 
 
 php artisan migrate
 php artisan passport:install
 
-Step 3: Passport Configuration app/User.php
+
+````
+
+
+## Step 3: Passport Configuration  app/User.php
+
+```javascript 
 
 <?php
 namespace App;
@@ -49,7 +69,14 @@ protected $hidden = [
 ];
 }
 
-app/Providers/AuthServiceProvider.php
+````
+
+
+## app/Providers/AuthServiceProvider.php
+
+
+
+```javascript 
 
 <?php
 namespace App\Providers;
@@ -78,7 +105,11 @@ class AuthServiceProvider extends ServiceProvider
     } 
 }
 
-Step 4 :config/auth.php
+````
+
+## Step 4 :config/auth.php
+
+```javascript 
 
 <?php
 return [
@@ -93,7 +124,10 @@ return [
         ], 
     ],
 
-Step 5: Create API Route
+````
+## Step 5: Create API Route
+
+```javascript 
 
 <?php
 /*
@@ -112,7 +146,12 @@ Route::group(['middleware' => 'auth:api'], function(){
 Route::post('details', 'API\UserController@details');
 });
 
-Step 6: Create the Controller
+````
+
+
+## Step 6: Create the Controller
+
+```javascript 
 
 <?php
 namespace App\Http\Controllers\API;
@@ -174,8 +213,14 @@ return response()->json(['success'=>$success], $this-> successStatus);
     } 
 }
 
-Step 7: Run
+
+````
+## Step 7: Run 
+
+```javascript 
 
 php artisan serve
 
 
+
+````
